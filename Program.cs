@@ -8,14 +8,24 @@ namespace Assignment_LINQ_01
         static void Main(string[] args)
         {
             #region Q1
-            var Seafood = Source.ProductList
-                .Where(P => P.Category == "Seafood")
-                .Select(S => new { Name = S.ProductName, Price = S.UnitPrice });
+            //var Seafood = Source.ProductList
+            //    .Where(P => P.Category == "Seafood")
+            //    .Select(S => new { Name = S.ProductName, Price = S.UnitPrice });
 
-            foreach (var item in Seafood)
+            //foreach (var item in Seafood)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
+            #region Q2
+            var P_Name = Source.ProductList
+                .Select(P => P.ProductName);
+            foreach(var item in P_Name)
             {
                 Console.WriteLine(item);
-            } 
+            }
+
             #endregion
 
         }
