@@ -38,14 +38,30 @@ namespace Assignment_LINQ_01
             #endregion
 
             #region Q5
-            var inStock = Source.ProductList
-                .Where(P => P.UnitsInStock > 0 && P.Category == "Condiments")
-                .Select(P => new { name = P.ProductName, id = P.ProductID });
-            foreach(var item in inStock)
+            //var inStock = Source.ProductList
+            //    .Where(P => P.UnitsInStock > 0 && P.Category == "Condiments")
+            //    .Select(P => new { name = P.ProductName, id = P.ProductID });
+            //foreach(var item in inStock)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
+            #region Q6
+            var products = Source.ProductList.Select(p => new
             {
-                Console.WriteLine(item);
+                Name = p.ProductName,
+                Price = p.UnitPrice,
+                StockStatus = p.UnitsInStock > 0 ? "Available" : "Out of Stock"
+            });
+
+            foreach (var item in products)
+            {
+                Console.WriteLine(
+                    $"{item.Name} - {item.Price} - {item.StockStatus}");
             }
             #endregion
+
 
         }
     }
