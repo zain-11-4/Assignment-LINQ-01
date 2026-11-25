@@ -28,15 +28,24 @@ namespace Assignment_LINQ_01
             #endregion
 
             #region Q4
-            var Products = Source.ProductList
-                .Where(P => P.UnitPrice > 10 && P.UnitPrice < 30)
+            //var Products = Source.ProductList
+            //    .Where(P => P.UnitPrice > 10 && P.UnitPrice < 30)
+            //    .Select(P => new { name = P.ProductName, id = P.ProductID });
+            //foreach(var item in Products)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
+            #region Q5
+            var inStock = Source.ProductList
+                .Where(P => P.UnitsInStock > 0 && P.Category == "Condiments")
                 .Select(P => new { name = P.ProductName, id = P.ProductID });
-            foreach(var item in Products)
+            foreach(var item in inStock)
             {
                 Console.WriteLine(item);
             }
             #endregion
-
 
         }
     }
